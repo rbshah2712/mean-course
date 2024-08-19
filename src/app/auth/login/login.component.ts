@@ -16,8 +16,9 @@ onLogin(form:NgForm) {
     if(form.invalid){
         return;
     }
+    this.isLoading = true;
     this.authservice.login(form.value.email,form.value.password);
 
-}
+    }
 
 }
