@@ -26,8 +26,6 @@ export class PostListComponent implements OnInit, OnDestroy{
     userIsAuthenticated = false;
     userId: string;
 
-
-
     constructor(private PostService:PostsService, private authService: AuthService){
         
     }
@@ -61,6 +59,8 @@ export class PostListComponent implements OnInit, OnDestroy{
        this.isLoading = true;
        this.PostService.deletePost(postId).subscribe(() => {
             this.PostService.getPosts(this.postsPerPage,this.currentPage);
+       },() => {
+            this.isLoading = false;
        });
     }
           
